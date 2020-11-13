@@ -20,7 +20,8 @@ BASE_DIR = environ.Path(__file__) - 2
 env = environ.Env()
 env.read_env(str(BASE_DIR.path('.env')))
 
-SECRET_KEY = env('SECRET_KEY')
+#SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = $SECRET_KEY
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
