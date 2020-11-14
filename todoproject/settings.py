@@ -30,8 +30,6 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-POSTGRES_PASSWORD = env('POSTGRES_PASSWORD')
-
 ALLOWED_HOSTS = []
 
 
