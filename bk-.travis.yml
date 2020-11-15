@@ -1,0 +1,27 @@
+language: python
+
+services:
+  - docker
+
+before_install:
+  - touch .env
+  - echo SECRET_KEY=$SECRET_KEY >> .env
+  - echo DEBUG=$DEBUG >> .env
+  - echo POSTGRES_USER=$POSTGRES_USER >> .env
+  - echo POSTGRES_PASSWORD=$POSTGRES_PASSWORD >> .env
+  - docker-compose up --build -d
+
+script:
+  - docker-compose exec web python3 manage.py test
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-northeast-1"
+  app: "kohei-todo"
+  env: "KoheiTodo-env"
+  bucket_name: "elasticbeanstalk-ap-northeast-1-580481854598"
+  bucket_path: "kohei-todo"
+  on:
+    branch: master
+  access_key_id: "$AWSAccessKeyId"
+  secret_access_key: "$AWSSecretKey"
